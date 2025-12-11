@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anigram</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .allProfiles {
+            width: 420px;
+            margin: auto;
+        }
+
+        /* Search Bar */
+        .findProfile {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .profiles {
+            margin-top: 10px;
+            background: #ffffff;
+            padding: 15px 18px;
+            border-radius: 12px;
+
+            /* Card shadow effect */
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.12);
+
+            /* Smooth look */
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Profile row */
+        .profile-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .profile-row:hover {
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        /* Circular image */
+        .profilePhoto {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Username design */
+        .username {
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Verified blue tick */
+        .verified {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Real name */
+        .realname {
+            font-size: 13px;
+            color: gray;
+            margin-top: -3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="allProfiles">
+        
+        <!-- Search bar -->
+        <input type="text" class="findProfile" placeholder="🔎 Search Animal Profile">
+
+        <div class="profiles">
+
+            <!-- Display all profiles -->
+            <% for (let animal in data) { %>
+                <% let username = data[animal].name; %>
+                <% let realName = data[animal].name + " Official"; %> 
+                <% let profilePhoto = data[animal].profile_photo; %>
+
+                <div class="profile-row", data-username="<%= username %>">
+                    <img src="<%= profilePhoto %>" class="profilePhoto">
+
+                    <div>
+                        <div class="username">
+                            <%= username %>
+                            <!-- Verified Icon -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified">
+                        </div>
+
+                        <div class="realname"><%= realName %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        let profile_rows = document.querySelectorAll('.profile-row');
+        profile_rows.forEach((row) => {
+            row.addEventListener('click', ()=> {
+                let username = row.dataset.username;
+                window.location.href = '/ag/' + username;
+            });
+        });
+        // search bar
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anigram/<%= username %></title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* MAIN PROFILE CONTAINER */
+        .profile-container {
+            width: 900px;
+            max-width: 95%;
+            margin: auto;
+            padding-top: 30px;
+        }
+
+        /* HEADER SECTION */
+        .profile-header {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* AVATAR */
+        #avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+        /* USERNAME + BUTTONS */
+        #profile-username {
+            font-size: 28px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .verified {
+            width: 20px;
+        }
+
+        /* Follow / Message Buttons */
+        #follow, #message {
+            padding: 6px 14px;
+            border: none;
+            background: #0095f6; /* Instagram blue */
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        #follow:hover, #message:hover {
+            background: #0077cc; /* Slightly darker blue */
+        }
+
+        #follow {
+            font-weight: 600;
+        }
+
+        /* STATS */
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .profile-stats p {
+            margin: 0;
+        }
+
+        /* POSTS GRID */
+        .profile-posts {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        /* EACH IMAGE */
+        #post {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+            background: #eee;
+        }
+
+        /* LIKE & COMMENT COUNT */
+        #likes, .comments {
+            margin: 4px 0 20px 0;
+            font-size: 15px;
+            color: #444;
+        }
+
+        /* CENTER ICON ROW UNDER POST */
+        .post-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="profile-container">
+
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <% let avatarUrl = data.profile_photo %>
+                <img src="<%= avatarUrl %>" alt="" id="avatar">
+            </div>
+
+            <div class="profile-info">
+                <div id="profile-username">
+                    <%= username %>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified">
+                    <button id="follow">Follow</button>
+                    <button id="message">Message</button>
+                </div>
+
+                <div class="profile-stats">     
+                    <p><strong><%= data.posts.length %></strong> posts</p>
+                    <p><strong><%= data.followers %></strong> followers</p>
+                    <p><strong><%= data.following %></strong> following</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-posts">
+
+            <% for(let post in data.posts) { %>
+                <div class="post-card">
+                    <img src="<%= data.posts[post].image %>" id="post">
+                    <div class="post-info">
+                        <p id="likes">❤️ <%= data.posts[post].likes %></p>
+                        <p class="comments">💬 <%= data.posts[post].comments %></p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+</html>
