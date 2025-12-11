@@ -12,7 +12,6 @@ Built using **Node.js**, **Express**, and **EJS**, this project demonstrates cle
 - 👤 Dedicated profile pages with avatar and stats
 - ❤️ Like & 💬 comment counters on posts
 - 🖼️ Responsive photo grid layout
-- ✔ Verified badge for animal profiles
 - 🌐 Dynamic Express routing for each profile
 - 🎨 Clean, modern, Instagram-inspired interface
 
