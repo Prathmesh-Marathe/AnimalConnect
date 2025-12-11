@@ -19,5 +19,12 @@ Built using **Node.js**, **Express**, and **EJS**, this project demonstrates cle
 
 ## 📸 Screenshots
 
-_Add your screenshots here:_
+<img width="1918" height="898" alt="image" src="https://github.com/user-attachments/assets/44852249-3ee9-4ede-be04-9e1e676c09e0" />
+
+<img width="1897" height="902" alt="image" src="https://github.com/user-attachments/assets/3abeb5ae-3b1a-4914-84c7-dbbda942ef36" />
+
+<img width="1915" height="902" alt="image" src="https://github.com/user-attachments/assets/3be6be25-80d4-4196-8c77-b03ddf2757dd" />
+
+
+
 
